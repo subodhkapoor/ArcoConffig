@@ -5,7 +5,7 @@
 
 ##################################################################################################################
 #
-#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#   RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################
 
@@ -20,15 +20,19 @@ sudo pacman -S --noconfirm --needed jq
 sudo pacman -S --noconfirm --needed git
 sudo pacman -S --noconfirm --needed yajl
 
+#enable antivirus software 
 sudo freshclam
-sudo systemctl enable firewalld.service 
-sudo systemctl start firewalld.service 
 sudo systemctl enable clamav-freshclam.service 
 sudo systemctl start clamav-freshclam.service 
 sudo systemctl enable clamav-daemon.service 
 sudo systemctl start clamav-daemon.service 
+
+#enable firewall services 
+sudo systemctl enable firewalld.service 
+sudo systemctl start firewalld.service 
 sudo firewall-cmd --set-default-zone=home
 
+#install other software from Main Arch repo 
 sudo pacman -S os-prober  
 sudo pacman -S --noconfirm --needed dosfstools
 sudo pacman -S --noconfirm --needed exfat-utils
@@ -63,10 +67,13 @@ sudo pacman -S --noconfirm --needed flatpak
 sudo pacman -S --noconfirm --needed snapd
 sudo pacman -S --noconfirm --needed base-devel
 sudo pacman -S --noconfirm --needed linux-headers
+#Audio Pipewire 
 sudo pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack
+#enable spellcheck 
 sudo pacman -S aspell-en libmythes mythes-en languagetool enchant mythes-en ttf-liberation hunspell-en_US ttf-bitstream-vera pkgstats adobe-source-sans-pro-fonts gst-plugins-good ttf-droid ttf-dejavu aspell-en icedtea-web gst-libav ttf-ubuntu-font-family ttf-anonymous-pro jre8-openjdk languagetool libmythes
 sudo pacman -S ttf-font-awesome ttf-roboto ttf-roboto-mono ttf-ubuntu-font-family
 sudo pacman -S pacman-contrib arch-audit exfat-utils fuse-exfat a52dec faad2 faac flac jasper lame libdca libdv gst-libav libmad libmpeg2 libxv wavpack x264 x265 xvidcore kdegraphics-thumbnailers kimageformats qt5-imageformats kdesdk-thumbnailers ffmpegthumbs raw-thumbnailer taglib ntfs-3g steam piper gnome-keyring openshot shotcut scribus sudo inkscape
+#enable ssd trim
 sudo systemctl enable fstrim.timer 
 sudo pacman -S wine wine-gecko lutris playonlinux proton-ge-custom-bin wine-mono winetricks
 #adding user to admin group 
@@ -78,6 +85,7 @@ makepkg -si
 sudo systemctl enable --now snapd.socket
 sudo ln -s /var/lib/snapd/snap /snap
 
+#setting network time protocol as true 
 set ntp --true
 
 #reduce swap space 

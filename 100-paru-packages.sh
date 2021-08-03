@@ -1,16 +1,22 @@
 #!/bin/bash
 #set -e
 ##################################################################################################################
-# Author 	:Subodh Kapoor
+
+Author 	:Subodh Kapoor
 
 ##################################################################################################################
 #
-#   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
+#   RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################
 
-#software from Arch Linux repositories
+#software from AUR (with Paru)
+#installing Paru 
+git clone https://aur.archlinux.org/paru.git
+cd paru/
+makepkg -si PKGBUILD 
 
+#icons and fonts 
 paru -S --noconfirm --needed apple-fonts
 paru -S --noconfirm --needed fluent-icon-theme-git 
 paru -S --noconfirm --needed tela-icon-theme-git  
@@ -19,13 +25,15 @@ paru -S --noconfirm --needed ttf-mac-fonts
 paru -S --noconfirm --needed ttf-ms-fonts
 paru -S --noconfirm --needed numix-icon-theme-git 
 paru -S --noconfirm --needed beautyline
+#browsers 
 paru -S --noconfirm --needed google-chrome
 paru -S --noconfirm --needed brave-bin
-paru -S --noconfirm --needed teams
-paru -S --noconfirm --needed bitwarden-bin 
 paru -S --noconfirm --needed microsoft-edge-beta-bin 
 paru -S --noconfirm --needed microsoft-edge-dev-bin 
 paru -S --noconfirm --needed firefox
+#other important office software
+paru -S --noconfirm --needed teams
+paru -S --noconfirm --needed bitwarden-bin 
 paru -S --noconfirm --needed audacity-wxgtk2 
 paru -S --noconfirm --needed dupeguru
 paru -S --noconfirm --needed bpytop
@@ -35,10 +43,10 @@ paru -S --noconfirm --needed lightworks
 paru -S --noconfirm --needed p7zip-gui
 paru -S --noconfirm --needed alac-git 
 paru -S --noconfirm --needed peazip-qt5  
-paru -S --noconfirm --needed mailspring-libre
+paru -S --noconfirm --needed mailspring-libre #also install gnome-keyring for this to work
 paru -S --noconfirm --needed flac
 paru -S --noconfirm --needed wavpack
-paru -S --noconfirm --needed radeontop-git
+paru -S --noconfirm --needed radeontop-git #only if you are using AMDGPU
 paru -S --noconfirm --needed flameshot-git 
 paru -S --noconfirm --needed cpu-x 
 paru -S --noconfirm --needed stacer 
@@ -48,7 +56,7 @@ paru -S --noconfirm --needed 4kvideodownloader
 paru -S --noconfirm --needed foxitreader 
 paru -S --noconfirm --needed burpsuite 
 paru -S --noconfirm --needed github-desktop-bin
-paru -S --noconfirm --needed lightly-git
+paru -S --noconfirm --needed lightly-git #will take some time 
 paru -S --noconfirm --needed arcolinux-meta-steam 
 paru -S --noconfirm --needed arcolinux-meta-utilities 
 paru -S --noconfirm --needed arcolinux-meta-samba
@@ -64,7 +72,7 @@ paru -S --noconfirm --needed mesa-vdpau
 #DavinciResolve 
 yay davinci-resolve
 
-#Vmware Installatino for Arch 
+#Vmware Installatino for Arch (will mostly work with Linux Karnel)
 paru -S --noconfirm --needed vmware-workstation
 sudo modprobe vmw_vmci vmmon
 sudo systemctl enable vmware-networks.service 
@@ -72,5 +80,5 @@ sudo systemctl enable vmware-usbarbitrator.service
 ###############################################################################################
 
 echo "################################################################"
-echo "################### AUR software installed"
+echo "#AUR software installed"
 echo "################################################################"
